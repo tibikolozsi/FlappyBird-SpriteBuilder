@@ -172,7 +172,7 @@
     }
     
     if ((_sinceTouch > 0.5f)) {
-        [character.physicsBody applyAngularImpulse:-40000.f * delta];
+//        [character.physicsBody applyAngularImpulse:-40000.f * delta];
     }
     
     physicsNode.position =
