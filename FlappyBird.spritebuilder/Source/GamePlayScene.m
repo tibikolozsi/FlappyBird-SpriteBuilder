@@ -9,7 +9,7 @@
     character = (Character *)[CCBReader load:@"Character"];
     [physicsNode addChild:character];
     
-    [self addObstacle]
+    [self addObstacle];
 }
 
 - (void)update:(CCTime)delta {
@@ -22,5 +22,9 @@
     // touches the screen
     [character flap];
 }
+
+//- (void)addObstacle {
+//    
+//}
 
 @end
