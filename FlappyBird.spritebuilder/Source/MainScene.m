@@ -76,13 +76,19 @@
     for (CCNode *bush in _bushes) {
         CGPoint offset = bush.position;
         [self removeChild:bush];
-        [_parallaxBackground addChild:bush z:0 parallaxRatio:_bushParallaxRatio positionOffset:offset];
+        [_parallaxBackground addChild:bush
+                                    z:0
+                        parallaxRatio:_bushParallaxRatio
+                       positionOffset:offset];
     }
     
     for (CCNode *cloud in _clouds) {
         CGPoint offset = cloud.position;
         [self removeChild:cloud];
-        [_parallaxBackground addChild:cloud z:0 parallaxRatio:_cloudParallaxRatio positionOffset:offset];
+        [_parallaxBackground addChild:cloud
+                                    z:0
+                        parallaxRatio:_cloudParallaxRatio
+                       positionOffset:offset];
     }
     
     // set this class as delegate
@@ -172,7 +178,7 @@
     }
     
     if ((_sinceTouch > 0.5f)) {
-//        [character.physicsBody applyAngularImpulse:-40000.f * delta];
+        //        [character.physicsBody applyAngularImpulse:-40000.f * delta];
     }
     
     physicsNode.position =
@@ -196,12 +202,16 @@
         }
     }
     
-    _parallaxBackground.position = ccp(_parallaxBackground.position.x - (character.physicsBody.velocity.x * delta), _parallaxBackground.position.y);
+    _parallaxBackground.position =
+    ccp(_parallaxBackground.position.x -
+        (character.physicsBody.velocity.x * delta),
+        _parallaxBackground.position.y);
     
     // loop the bushes
     for (CCNode *bush in _bushes) {
         // get the world position of the bush
-        CGPoint bushWorldPosition = [_parallaxBackground convertToWorldSpace:bush.position];
+        CGPoint bushWorldPosition =
+        [_parallaxBackground convertToWorldSpace:bush.position];
         // get the screen position of the bush
         CGPoint bushScreenPosition = [self convertToNodeSpace:bushWorldPosition];
         
@@ -210,7 +220,8 @@
         if (bushScreenPosition.x <= (-1 * bush.contentSize.width)) {
             for (CGPointObject *child in _parallaxBackground.parallaxArray) {
                 if (child.child == bush) {
-                    child.offset = ccp(child.offset.x + 2*bush.contentSize.width, child.offset.y);
+                    child.offset =
+                    ccp(child.offset.x + 2 * bush.contentSize.width, child.offset.y);
                 }
             }
         }
@@ -219,7 +230,8 @@
     // loop the clouds
     for (CCNode *cloud in _clouds) {
         // get the world position of the cloud
-        CGPoint cloudWorldPosition = [_parallaxBackground convertToWorldSpace:cloud.position];
+        CGPoint cloudWorldPosition =
+        [_parallaxBackground convertToWorldSpace:cloud.position];
         // get the screen position of the cloud
         CGPoint cloudScreenPosition = [self convertToNodeSpace:cloudWorldPosition];
         
@@ -228,7 +240,8 @@
         if (cloudScreenPosition.x <= (-1 * cloud.contentSize.width)) {
             for (CGPointObject *child in _parallaxBackground.parallaxArray) {
                 if (child.child == cloud) {
-                    child.offset = ccp(child.offset.x + 2*cloud.contentSize.width, child.offset.y);
+                    child.offset =
+                    ccp(child.offset.x + 2 * cloud.contentSize.width, child.offset.y);
                 }
             }
         }
@@ -268,7 +281,7 @@
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
                       character:(CCSprite *)character
                           level:(CCNode *)level {
-//    [self gameOver];
+    //    [self gameOver];
     return TRUE;
 }
 
